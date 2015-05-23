@@ -1,0 +1,19 @@
+.container{
+    text-align: center;
+    margin: 100px;
+}
+.wrapper{
+    float: right;
+    list-style: none;
+
+}
+.wrapper li{
+    display: inline;
+}
+.formTitle{
+    float: left;
+}
+.active{
+    background-color: black;
+    color: white;
+}
