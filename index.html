@@ -13,7 +13,7 @@
 <body>
 <div ng-app="practiceApp" ng-controller="SwitchController">
     <ul>
-        <li ng-repeat="item in items" ng-click="switch()">{{item.name}}</li>
+        <li ng-repeat="item in items" ng-click="switch($index)">{{item}}</li>
     </ul>
     <div ng-switch on="selection">
         <div ng-switch-when="AGENTS"> AGENTS</div>
