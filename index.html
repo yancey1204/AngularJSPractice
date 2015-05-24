@@ -14,9 +14,10 @@
 <div class="container" ng-app="practiceApp" ng-controller="SwitchController">
     <div>
         <!-- show all the tabs-->
-    <ul class="wrapper">
-        <li ng-repeat="item in items" ng-click="switch($index)" ng-class="{active: $index == itemIndex}">{{item}}</li>
-    </ul>
+        <ul class="wrapper">
+            <li ng-repeat="item in items" ng-click="switch($index)" ng-class="{active: $index == itemIndex}">{{item}}
+            </li>
+        </ul>
         <div style="clear: both;"></div>
         <!-- show the title of the tab-->
         <div class="formTitle">Title:{{selection}}</div>
@@ -24,7 +25,9 @@
     <div style="clear: both;"></div>
     <!-- show the content of the tab-->
     <div ng-switch on="selection" class="content">
-        <div ng-switch-when="AGENTS">Content of AGENTS</div>
+        <div ng-switch-when="AGENTS" ng-controller="AgentlistController">
+            <content-view></content-view>
+        </div>
 
         <div ng-switch-when="HELP">Content of HELP</div>
     </div>
