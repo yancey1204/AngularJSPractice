@@ -1,19 +1,152 @@
-.container{
+.container {
     text-align: center;
-    margin: 100px;
+    margin: 30px 70px;
+    font-family: sans-serif;
 }
-.wrapper{
+
+.itemList {
     float: right;
     list-style: none;
+    margin: 8px 0px;
+}
 
-}
-.wrapper li{
+.itemList li {
     display: inline;
+    padding: 12px 20px;
+    margin-right: 4px;
+    font-size: 19px;
+    border: black;
+    border-style: solid;
+    border-bottom-style: none;
+    border-radius: 20px 20px 0px 0px;
 }
-.formTitle{
+
+.formTitle {
+    background-color: #606060;
+    color: #E9E9E9;
+    font-size: 29px;
+    width: 100%;
+    line-height: 60px;
+    text-align: left;
+    border: #28272A;
+    border-style: solid;
+}
+
+.formTitle p {
+    margin: 0 23px;
+}
+
+.active {
+    background-color: #606060;
+    color: #E9E9E9;
+    padding-top: 19px !important;
+}
+
+.last {
+    margin-right: -6px !important
+}
+
+.content {
+    width: 100%;
+    border: #28272A;
+    border-style: solid;
+    border-top-style: none;
+}
+
+/*content */
+.leftContent {
+    float: left;
+    width: 70%;
+    border-right-style: solid;
+    border-color: #898989;
+}
+
+.rightContent {
+    float: left;
+    width: 29%;
+    text-align: left;
+}
+
+/*leftcontent*/
+.circle {
+    width: 70px;
+    height: 70px;
+    background: #999999;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    float: left;
+    margin: 15px 25px;
+}
+
+.item {
+    width: 93%;
+    border-color: #737B69;
+    border-radius: 20px;
+    border-style: solid;
+    margin: 20px;
+}
+
+.building {
+    background-color: #FEFBB3;
+}
+
+.idle {
+    background-color: #CCE8B5;
+}
+
+.rightOfCircle {
     float: left;
 }
-.active{
-    background-color: black;
-    color: white;
+
+.itemTitle {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.divider {
+    color: lightgray;
+}
+
+.rec {
+    margin-right: 20px;
+}
+
+.add {
+    text-decoration: underline;
+}
+
+.remove {
+    font-size: 14px;
+}
+
+.lineOne {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.lineTwo {
+    text-align: left;
+}
+
+.lineOne .lineTwo {
+    width: 100%;
+}
+/*right content*/
+.summaryPanel{
+    margin: 15px 19px;
+}
+.summaryPanel td{
+    padding: 10px;
+    width: 50%;
+}
+
+/*the add resources form*/
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #E0ECD4;
 }

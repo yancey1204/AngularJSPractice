@@ -1,24 +1,51 @@
-<div>
-    <div ng-repeat="item in AgentItems">
-        <div>
-            {{item.title}} | {{item.category}} | {{item.ip}}
-        </div>
-        <div>
-            <div ng-click="addPanel = true">+ Specify Resources</div>
-            | Resources:
-            <div ng-repeat="resource in item.resources"> {{resource}}
-                <div ng-click="remove(resource,item)">X</div>
+<div class="leftContent">
+    <div ng-repeat="item in AgentItems" class="item" ng-class="getClass($index)">
+        <div class="circle"></div>
+        <div class="rightOfCircle">
+            <div class="lineOne">
+                <span class="itemTitle">{{item.title}}</span>
+                <span class="divider">|</span>
+                <span>{{item.category}}</span>
+                <span class="divider">|</span>
+                <span>{{item.ip}}</span>
             </div>
-            <form ng-show="addPanel" ng-submit="sendRec(resourceArray,item)">(separate multiple resources name with commas)
-                <input type="text" ng-model="resourceArray">
-                <input type="submit" value="Add resources" ng-click="addPanel = false">
-                <input type="button" ng-click="addPanel = false" value="Close">
-            </form>
+            <div class="lineTwo">
+                <span ng-click="addPanel = true" class="add">+ Specify Resources</span>
+                <span class="divider">|</span>
+                <span>Resources:</span>
+                <span ng-repeat="resource in item.resources" class="rec"> {{resource}}
+                   <span ng-click="remove(resource,item)" class="divider remove">X</span>
+                </span>
+            </div>
         </div>
+
+        <div style="clear: both;"></div>
+        <form ng-show="addPanel" ng-submit="sendRec(resourceArray,item)" class="addForm">
+            <div class="triangle-up"></div>
+            (separate multiple resources name with commas)
+            <input type="text" ng-model="resourceArray">
+            <input type="submit" value="Add resources" ng-click="addPanel = false">
+            <input type="button" ng-click="addPanel = false" value="Close">
+        </form>
+
     </div>
 </div>
-<div>
-    Summary
-    idle {{AgentItems | sumByKey:'idle'}}
-    building {{AgentItems | sumByKey:'building'}}
+
+<div class="rightContent">
+    <div class="summaryPanel">
+        <span style="font-size: 23px">Summary</span>
+        <hr>
+        <table style="width:100%">
+            <tr>
+                <td>building</td>
+                <td>{{AgentItems | sumByKey:'building'}}</td>
+            </tr>
+            <tr>
+                <td>idle</td>
+                <td>{{AgentItems | sumByKey:'idle'}}</td>
+            </tr>
+        </table>
+
+
+    </div>
 </div>

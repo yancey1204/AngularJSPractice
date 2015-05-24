@@ -6,22 +6,24 @@
     <!-- libs-->
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
     <script type="text/javascript" src="js/controllers/app.js"></script>
-    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.2/angular.min.js"></script>-->
-
+    <!--style-->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="container" ng-app="practiceApp" ng-controller="SwitchController">
-    <div>
+    <div class="wrapper">
         <!-- show all the tabs-->
-        <ul class="wrapper">
-            <li ng-repeat="item in items" ng-click="switch($index)" ng-class="{active: $index == itemIndex}">{{item}}
+        <ul class="itemList">
+            <li ng-repeat="item in items" ng-click="switch($index)"
+                ng-class="{active: $index == itemIndex,last: $last}">
+                {{item}}
             </li>
         </ul>
         <div style="clear: both;"></div>
         <!-- show the title of the tab-->
-        <div class="formTitle">Title:{{selection}}</div>
+        <div class="formTitle"><p>{{selection | capitalize}}</p></div>
     </div>
+
     <div style="clear: both;"></div>
     <!-- show the content of the tab-->
     <div ng-switch on="selection" class="content">
@@ -30,6 +32,7 @@
         </div>
 
         <div ng-switch-when="HELP">Content of HELP</div>
+        <div style="clear: both;"></div>
     </div>
 </div>
 </body>

@@ -48,7 +48,16 @@ app.controller('AgentlistController', ['$scope','$http', function ($scope,$http)
         for (var i = 0; i < newdata.length; i++){
             $scope.AgentItems[indexOfItem].resources.push(newdata[i]);
         }
+        indexOfItem = null;
+        newdata={};
     };
+
+    $scope.getClass=function(index){
+        var data = $scope.AgentItems[index].category;
+        if(data=='building'){return 'building';}
+        else if(data=='idle'){return 'idle';}
+        data=null;
+    }
 }]);
 
 
@@ -65,7 +74,13 @@ app.filter('sumByKey', function () {
         return sum;
     };
 });
-
+app.filter('capitalize', function() {
+    return function(data, scope) {
+        if (data!=null)
+            data = data.toLowerCase();
+        return data.substring(0,1).toUpperCase()+data.substring(1);
+    }
+});
 app.directive('contentView', function () {
     return {
         restrict: 'E',
