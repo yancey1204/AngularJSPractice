@@ -1,5 +1,5 @@
 <div class="leftContent">
-    <div ng-repeat="item in AgentItems" class="item" ng-class="getClass($index)">
+    <div ng-repeat="item in AgentItems" class="item" ng-class="getClassByIndex($index)">
         <div class="circle"></div>
         <div class="rightOfCircle">
             <div class="lineOne">
@@ -10,22 +10,25 @@
                 <span>{{item.ip}}</span>
             </div>
             <div class="lineTwo">
-                <span ng-click="addPanel = true" class="add">+ Specify Resources</span>
+                <span ng-click="toggle($index)" class="add">+ Specify Resources</span>
                 <span class="divider">|</span>
                 <span>Resources:</span>
                 <span ng-repeat="resource in item.resources" class="rec"> {{resource}}
                    <span ng-click="remove(resource,item)" class="divider remove">X</span>
                 </span>
+                <div style="clear: both;"></div>
+                <span ng-show="getClassByIndex($index) == 'building'" class="StopBT" ng-click="CangeToIdle($index)" >Stop</span>
             </div>
         </div>
 
         <div style="clear: both;"></div>
-        <form ng-show="addPanel" ng-submit="sendRec(resourceArray,item)" class="addForm">
-            <div class="triangle-up"></div>
-            (separate multiple resources name with commas)
-            <input type="text" ng-model="resourceArray">
-            <input type="submit" value="Add resources" ng-click="addPanel = false">
-            <input type="button" ng-click="addPanel = false" value="Close">
+        <form ng-show="item.showAddPanel" ng-submit="sendRec(resourceArray,item)" class="addForm">
+            <div class="formWapper">
+           <p>(separate multiple resources name with commas)</p>
+                <input type="text" ng-model="resourceArray" class="inputBox">
+            <input type="submit" value="Add Resources" ng-click="item.showAddPanel = false" class="addFormBT">
+            <input type="button" ng-click="item.showAddPanel = false" value="Close" class="addFormBT">
+            </div>
         </form>
 
     </div>

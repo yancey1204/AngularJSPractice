@@ -4,43 +4,28 @@ app.controller('SwitchController', ['$scope', function ($scope) {
     $scope.items = ['AGENTS', 'HELP'];
     $scope.selection = $scope.items[0];
     $scope.itemIndex = 0;
-
     $scope.switch = function (index) {
         $scope.selection = $scope.items[index];
         $scope.itemIndex = index;
     };
 }]);
 
-app.controller('AgentlistController', ['$scope','$http', function ($scope,$http) {
-    $scope.AgentItems =
-        [
-            {
-                title: "agent02.thoughtworks.com", category: 'idle', ip: '192.168.1.2',
-                resources: ['ubuntu', 'firefox']
-            },
-            {
-                title: "agent03.thoughtworks.com", category: 'building', ip: '192.168.1.3',
-                resources: ['ubuntu', 'chrome', 'mysql']
-            },
-            {
-                title: "agent04.thoughtworks.com", category: 'building', ip: '192.168.1.4',
-                resources: ['ie', 'mysql']
-            },
-            {
-                title: "agent05.thoughtworks.com", category: 'idle', ip: '192.168.1.5',
-                resources: ['ubuntu']
-            }
-        ];
+app.controller('AgentlistController', ['$scope', function ($scope) {
+    $scope.AgentItems = [{
+                title: "agent02.thoughtworks.com", category: 'idle', ip: '192.168.1.2',resources: ['ubuntu', 'firefox']
+            }, {
+                title: "agent03.thoughtworks.com", category: 'building', ip: '192.168.1.3', resources: ['ubuntu', 'chrome', 'mysql']
+            }, {
+                title: "agent04.thoughtworks.com", category: 'building', ip: '192.168.1.4', resources: ['ie', 'mysql']
+            }, {
+                title: "agent05.thoughtworks.com", category: 'idle', ip: '192.168.1.5', resources: ['ubuntu']
+            }];
+
     $scope.remove = function(resource,item){
-        //console.log(resource);
-        //console.log(item);
         var indexOfItem = $scope.AgentItems.indexOf(item);
-        //console.log(indexOfItem);
         var index = $scope.AgentItems[indexOfItem].resources.indexOf(resource);
-        //console.log(index);
         $scope.AgentItems[indexOfItem].resources.splice(index,1);
     }
-
     $scope.sendRec = function(data,item){
         var indexOfItem = $scope.AgentItems.indexOf(item);
         var newdata = data.split(',');
@@ -52,15 +37,27 @@ app.controller('AgentlistController', ['$scope','$http', function ($scope,$http)
         newdata={};
     };
 
-    $scope.getClass=function(index){
+    $scope.getClassByIndex=function(index){
         var data = $scope.AgentItems[index].category;
         if(data=='building'){return 'building';}
         else if(data=='idle'){return 'idle';}
         data=null;
     }
+
+    $scope.toggle =function(index) {
+        console.log(index);
+        for(var i=0;i<$scope.AgentItems.length;i++){
+            $scope.AgentItems[i].showAddPanel=false;
+        }
+       return $scope.AgentItems[index].showAddPanel = true;
+    }
+
+    $scope.CangeToIdle = function(index){
+        var data = $scope.AgentItems[index];
+        data.category = 'idle';
+        console.log(data.category);
+    }
 }]);
-
-
 
 app.filter('sumByKey', function () {
     return function (data, key) {
@@ -81,6 +78,7 @@ app.filter('capitalize', function() {
         return data.substring(0,1).toUpperCase()+data.substring(1);
     }
 });
+
 app.directive('contentView', function () {
     return {
         restrict: 'E',
