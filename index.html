@@ -28,7 +28,10 @@
     <!-- show the content of the tab-->
     <div ng-switch on="selection" class="content">
         <div ng-switch-when="AGENTS" ng-controller="AgentlistController">
-            <content-view></content-view>
+            <div >
+                <left-content ng-controller="AgentitemController"></left-content>
+                <right-content></right-content>
+            </div>
         </div>
 
         <div ng-switch-when="HELP">Content of HELP</div>

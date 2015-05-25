@@ -24,31 +24,12 @@
         <div style="clear: both;"></div>
         <form ng-show="item.showAddPanel" ng-submit="sendRec(resourceArray,item)" class="addForm">
             <div class="formWapper">
-           <p>(separate multiple resources name with commas)</p>
+                <p>(separate multiple resources name with commas)</p>
                 <input type="text" ng-model="resourceArray" class="inputBox">
-            <input type="submit" value="Add Resources" ng-click="item.showAddPanel = false" class="addFormBT">
-            <input type="button" ng-click="item.showAddPanel = false" value="Close" class="addFormBT">
+                <input type="submit" value="Add Resources" ng-click="item.showAddPanel = false" class="addFormBT">
+                <input type="button" ng-click="item.showAddPanel = false" value="Close" class="addFormBT">
             </div>
         </form>
-
-    </div>
-</div>
-
-<div class="rightContent">
-    <div class="summaryPanel">
-        <span style="font-size: 23px">Summary</span>
-        <hr>
-        <table style="width:100%">
-            <tr>
-                <td>building</td>
-                <td>{{AgentItems | sumByKey:'building'}}</td>
-            </tr>
-            <tr>
-                <td>idle</td>
-                <td>{{AgentItems | sumByKey:'idle'}}</td>
-            </tr>
-        </table>
-
 
     </div>
 </div>
